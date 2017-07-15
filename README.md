@@ -21,11 +21,7 @@
 
     sudo apt-get install git
 
- 4. Install angular/cli
-
-    npm install -g @angular/cli
-
- 5. Install Redis
+ 4. Install Redis
 
     wget http://download.redis.io/releases/redis-3.2.6.tar.gz
 
@@ -42,9 +38,9 @@
     sudo ./install_server.sh
 
 
- 6. Install python 2.7: This is installed already in Ubuntu
+ 5. Install python 2.7: This is installed already in Ubuntu
 
- 7. Install pip: 
+ 6. Install pip: 
 
     (sudo apt-get update)
 
@@ -52,11 +48,11 @@
 
     sudo pip install Flask
 
- 8. Install Docker: 
+ 7. Install Docker: 
 
     curl -fsSL https://get.docker.com/ | sh
 
- 9. Setup docker permission: 
+ 8. Setup docker permission: 
 
     sudo usermod -aG docker $(whoami)
 
@@ -64,27 +60,23 @@
 
    To start docker when the system boots: sudo systemctl enable docker
 
- 10. Install Nginx
+ 9. Setup Elasticsearch:
+    
+    sudo docker pull elasticsearch
+    
+    mkdir /usr/share/elasticsearch/data/esdata
+    
+    docker run -d --name elasticsearch  -p 9200:9200 -p 9300:9300 -v /esdata:/usr/share/elasticsearch/data elasticsearch
+    
+    test elasticsearch container is running: curl -X GET http://localhost:9200
+    
+ 10. Setup Logstash:
+    
+    sudo docker pull logstash
+    
+ 11. Setup Kibana:
+    
+    sudo docker pull Kibana
+    
+  
  
-   (For ubuntu 16.04) Add following two lines into /etc/apt/sources.list 
-
-   deb http://nginx.org/packages/ubuntu/ xenial nginx 
-
-   deb-src http://nginx.org/packages/ubuntu/ xenial nginx 
-
-   Then run: 
-
-   sudo apt-get update 
-
-   sudo apt-get install nginx
-   
-### FAQ
-* I failed to install `newspaper` package. It shows errors like 'could not build the egg.'
-This is because an error when installing nltk dependency. Try following commands:
-```bash
-$ sudo apt-get install python-dev
-$ sudo apt-get install libxml2-dev libxslt-dev
-$ sudo apt-get install libjpeg-dev zlib1g-dev libpng12-devpip 
-$ sudo install —upgrade setuptools
-$ sudo pip install newspaper
-```
