@@ -126,6 +126,15 @@
     sudo vim /etc/filebeat/filebeat.yml
     
     '''
-    
+    filebeat.prospectors:
+      - input_type: log
+        paths:
+          - /var/log/main.log
+     #----------------------------- Logstash output --------------------------------
+    output.logstash:
+      # The Logstash hosts
+      hosts: ["localhost:5044"]
     '''
+    
+    
  
