@@ -36,7 +36,7 @@
     cd utils
 
     sudo ./install_server.sh
-
+   
 
  5. Install python 2.7: This is installed already in Ubuntu
 
@@ -135,6 +135,7 @@
       # The Logstash hosts
       hosts: ["localhost:5044"]
     '''
+    sudo systemctl restart filebeat
     
     
  
