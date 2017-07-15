@@ -73,7 +73,7 @@
     test elasticsearch container is running: curl -X GET http://localhost:9200
     
  10. Setup Logstash:
-    
+ 
     sudo docker pull logstash
     
     mkdir /logstash
@@ -110,10 +110,15 @@
     }
     '''
     
+    docker run -d --name logstash -p 5044:5044 --link elasticsearch:elasticsearch -v "$PWD":/logstash logstash -f   /logstash/logstash.conf
+
     
  11. Setup Kibana:
     
     sudo docker pull Kibana
+    
+    docker run --name kibana --link elasticsearch:elasticsearch -p 5601:5601 -d kibana
+
     
   
  
