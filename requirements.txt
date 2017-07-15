@@ -1,0 +1,12 @@
+python-jsonrpc
+pymongo
+pika
+python-dateutil
+lxml
+newspaper
+redis
+requests
+numpy
+scipy
+sklearn
+logstash_formatter

@@ -1,0 +1,17 @@
+.recommend-news-intro-col {
+  display: inline-flex;
+  color: black;
+  height: 100%;
+  font-size: 16px;
+}
+
+.side-img{
+	width: 85%;
+	height: 80%;
+}
+
+.side-img img {
+    min-width: 100%;
+    max-height: 85px;
+    object-fit: cover;
+}
