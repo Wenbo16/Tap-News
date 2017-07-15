@@ -42,11 +42,9 @@
 
  6. Install pip: 
 
-    (sudo apt-get update)
+    sudo apt-get update
 
     sudo apt install python-pip
-
-    sudo pip install Flask
 
  7. Install Docker: 
 
@@ -119,6 +117,15 @@
     
     docker run --name kibana --link elasticsearch:elasticsearch -p 5601:5601 -d kibana
 
+ 12. Installing and Configuring Beats:
     
-  
+    curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.5.0-amd64.deb
+    
+    sudo dpkg -i filebeat-5.5.0-amd64.deb
+
+    sudo vim /etc/filebeat/filebeat.yml
+    
+    '''
+    
+    '''
  
