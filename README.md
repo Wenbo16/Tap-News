@@ -68,11 +68,48 @@
     
     docker run -d --name elasticsearch  -p 9200:9200 -p 9300:9300 -v /esdata:/usr/share/elasticsearch/data elasticsearch
     
+    docker start elasticsearch
+
     test elasticsearch container is running: curl -X GET http://localhost:9200
     
  10. Setup Logstash:
     
     sudo docker pull logstash
+    
+    mkdir /logstash
+    
+    vim /logstash/logstash.conf
+    
+    '''
+    input {
+      beats {
+       port => 5044
+      }
+    }
+    
+    filter {
+      if [type] == "syslog" {
+        grok {
+          match => { "message" => "%{SYSLOGLINE}" }
+        }
+
+        date {
+           match => [ "timestamp", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss" ]
+        }
+      }
+    }
+    
+    output {
+      elasticsearch {
+       hosts => ["elasticsearch:9200"] 
+         index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
+      }
+      stdout {
+        codec => rubydebug
+      }
+    }
+    '''
+    
     
  11. Setup Kibana:
     
