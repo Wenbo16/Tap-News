@@ -78,7 +78,7 @@
     
     vim /logstash/logstash.conf
     
-    '''
+    ```
     input {
       beats {
        port => 5044
@@ -106,7 +106,7 @@
         codec => rubydebug
       }
     }
-    '''
+    ```
     
     docker run -d --name logstash -p 5044:5044 --link elasticsearch:elasticsearch -v "$PWD":/logstash logstash -f   /logstash/logstash.conf
 
@@ -125,7 +125,7 @@
 
     sudo vim /etc/filebeat/filebeat.yml
     
-    '''
+    ```
     filebeat.prospectors:
       - input_type: log
         paths:
@@ -134,8 +134,8 @@
     output.logstash:
       # The Logstash hosts
       hosts: ["localhost:5044"]
-    '''
+    ```
     sudo systemctl restart filebeat
     
     
- 
+ reference: http://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-run-elk-stack-on-docker-container.html
