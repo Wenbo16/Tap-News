@@ -57,8 +57,11 @@
    (you need to logout and login again after set permission)
 
    To start docker when the system boots: sudo systemctl enable docker
+   
+ 9. Install MongoDB
+    https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
- 9. Setup Elasticsearch:
+ 10. Setup Elasticsearch:
     
     sudo docker pull elasticsearch
     
@@ -70,7 +73,7 @@
 
     test elasticsearch container is running: curl -X GET http://localhost:9200
     
- 10. Setup Logstash:
+ 11. Setup Logstash:
  
     sudo docker pull logstash
     
@@ -111,13 +114,13 @@
     docker run -d --name logstash -p 5044:5044 --link elasticsearch:elasticsearch -v "$PWD":/logstash logstash -f   /logstash/logstash.conf
 
     
- 11. Setup Kibana:
+ 12. Setup Kibana:
     
     sudo docker pull Kibana
     
     docker run --name kibana --link elasticsearch:elasticsearch -p 5601:5601 -d kibana
 
- 12. Installing and Configuring Beats:
+ 13. Installing and Configuring Beats:
     
     curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.5.0-amd64.deb
     
