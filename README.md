@@ -139,3 +139,14 @@
     
     
  reference: http://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-run-elk-stack-on-docker-container.html
+
+### FAQ
+* I failed to install `newspaper` package. It shows errors like 'could not build the egg.'
+This is because an error when installing nltk dependency. Try following commands:
+```bash
+$ sudo apt-get install python-dev
+$ sudo apt-get install libxml2-dev libxslt-dev
+$ sudo apt-get install libjpeg-dev zlib1g-dev libpng12-devpip 
+$ sudo pip install --upgrade setuptools
+(if above code does not work: sudo easy_install -U setuptools)
+$ sudo pip install newspaper
